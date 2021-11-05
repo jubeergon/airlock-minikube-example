@@ -86,29 +86,6 @@ scenarios:
   - name: "Authenticated session with some requests"
     flow:
       - log: "Authenticate user's session and send some requests"
-      - post:
-          url: "/auth/rest/public/authentication/location/access"
-          headers:
-            User-Agent: "{{ user-agents }}"
-            X-Forwarded-For: "{{ X-Forwarded-For }}"
-            X-Same-Domain: "1"
-          json:
-            location: "https://ingress-nginx-controller.ingress-nginx/echo/"
-          expect:
-            - statusCode: 401
-      - think: 4
-      - post:
-          url: "/auth/rest/public/authentication/password/check"
-          headers:
-            User-Agent: "{{ user-agents }}"
-            X-Forwarded-For: "{{ X-Forwarded-For }}"
-            X-Same-Domain: "1"
-          json:
-            username: "{{ username }}"
-            password: password
-          expect:
-            - statusCode: 200
-      - think: 4
       - get:
           url: "/echo/users/{{ $randomNumber(1, 100) }}"
           headers:
@@ -160,14 +137,6 @@ scenarios:
           expect:
             - statusCode: 503
       - think: 4
-      - get:
-          url: "/auth/logout"
-          headers:
-            User-Agent: "{{ user-agents }}"
-            X-Forwarded-For: "{{ X-Forwarded-For }}"
-          expect:
-            - statusCode: 302
-    weight: 7
   - name: "Attack string"
     flow:
       - log: "Attack string"
@@ -205,18 +174,3 @@ scenarios:
           expect:
             - statusCode: 400
     weight: 2
-  - name: "Parameter tampering"
-    flow:
-      - log: "Parameter tampering"
-      - post:
-          url: "/auth/login"
-          headers:
-            User-Agent: "{{ user-agents }}"
-            X-Forwarded-For: "{{ X-Forwarded-For }}"
-            Content-Type: application/json
-          json:
-            user: "{{ username }}"
-            password: password
-          expect:
-            - statusCode: 400
-    weight: 1
