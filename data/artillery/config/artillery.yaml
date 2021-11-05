@@ -9,11 +9,11 @@ config:
     - name: "Warm up the application"
       duration: 45
       arrivalRate: 1
-      rampTo: 10
+      rampTo: 50
     - name: "Sustained max load"
       duration: 1200
-      arrivalRate: 10
-      rampTo: 50
+      arrivalRate: 50
+      rampTo: 500
   variables:
     username:
       - customer1
