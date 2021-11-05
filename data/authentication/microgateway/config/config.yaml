@@ -49,6 +49,7 @@ apps:
       - mapping_template_file: /config/templates/iam-loginapp-rest-public.xml
         entry_path:
           value: /auth/rest/public
+          enforce_trailing_slashes: false
         backend_path: /auth-login/rest/public
         operational_mode: production
         cookies:
@@ -66,6 +67,7 @@ apps:
       - mapping_template_file: /config/templates/iam-loginapp-rest-protected.xml
         entry_path:
           value: /auth/rest/protected
+          enforce_trailing_slashes: false
         backend_path: /auth-login/rest/protected
         operational_mode: production
         cookies:
