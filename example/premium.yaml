@@ -8,7 +8,7 @@ metadata:
 spec:
   project: default
   source:
-    repoURL: https://github.com/julianbe/airlock-minikube-example.git
+    repoURL: https://github.com/jubeergon/airlock-minikube-example.git
     targetRevision: microgateway-3.0.0
     path: apps/minikube-example/
 
@@ -16,7 +16,7 @@ spec:
       values: |
         spec:
           source:
-            repoURL: https://github.com/julianbe/airlock-minikube-example.git
+            repoURL: https://github.com/jubeergon/airlock-minikube-example.git
             targetRevision: microgateway-3.0.0
 
           syncPolicy:
