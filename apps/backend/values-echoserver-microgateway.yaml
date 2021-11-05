@@ -3,11 +3,17 @@ echoserver:
     spec:
       source:
         repoURL: https://ergon.github.io/airlock-helm-charts
-        targetRevision: 2.2.1
+        targetRevision: 3.0.0
         chart: microgateway
 
     helm:
       values:
+        image:
+          repository:
+            runtime: docker.ergon.ch/airlock/airlock-microgateway
+            configbuilder: docker.ergon.ch/airlock/airlock-microgateway-configbuilder
+          tag: 3.0.0.sprint9_Build009
+
         fullnameOverride: echoserver-microgateway
 
         resources:
