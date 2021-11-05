@@ -3,7 +3,7 @@ grafana:
     spec:
       source:
         repoURL: https://ergon.github.io/airlock-helm-charts
-        targetRevision: 3.0.0
+        targetRevision: 2.2.1
         chart: microgateway
 
     helm:
@@ -13,7 +13,7 @@ grafana:
             runtime: docker.ergon.ch/airlock/airlock-microgateway
             configbuilder: docker.ergon.ch/airlock/airlock-microgateway-configbuilder
           tag: 3.0.0.sprint9_Build009
-          
+
         fullnameOverride: grafana-microgateway
 
         resources:
